@@ -11,14 +11,8 @@ export const LIMITS = {
   BLANK_GUESS_MAX_LENGTH: 30,
 };
 
-// Blocklist: lowercase. Add more entries as needed; keep one per line for readability.
-const BLOCKED_WORDS = new Set([
-  'damn', 'crap', 'hell', 'ass', 'bastard', 'bitch', 'dick', 'shit', 'fuck', 'fucking', 'fucker',
-  'piss', 'pussy', 'cock', 'whore', 'slut', 'nigger', 'nigga', 'fag', 'faggot', 'retard', 'retarded',
-  'cunt', 'motherfucker', 'wtf', 'stfu', 'bs', 'bullshit', 'dumbass', 'dipshit', 'shitty',
-  'asshole', 'dickhead', 'bollocks', 'bloody', 'bugger', 'sod', 'wanker', 'twat', 'bellend',
-  'prick', 'jackass', 'dumb', 'idiot', 'moron', 'stupid',
-]);
+// Blocklist: lowercase. Add words as needed; empty for now.
+const BLOCKED_WORDS = new Set([]);
 
 /**
  * Normalize for blocklist check: lowercase, collapse non-letters to space, trim.
