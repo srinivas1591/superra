@@ -28,7 +28,8 @@ import { validateInviteCode, saveGameToDb, saveScoresToDb, deleteGameFromDb, loa
 import { validateName, validateClue, validateBlankGuess, LIMITS } from './validation.js';
 
 const PORT = process.env.PORT || 3001;
-const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
+// Normalize: no trailing slash so CORS origin matches browser (e.g. https://superra.netlify.app)
+const FRONTEND_URL = (process.env.FRONTEND_URL || 'http://localhost:5173').replace(/\/$/, '');
 
 const app = express();
 const httpServer = createServer(app);
