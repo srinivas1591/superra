@@ -17,8 +17,17 @@ export const PHASES = {
 // In-memory games (keyed by inviteCode). Persisted to MongoDB for invite validation.
 const games = new Map();
 
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 function assignRoles(playerIds, counts) {
-  const shuffled = [...playerIds].sort(() => Math.random() - 0.5);
+  const shuffled = shuffleArray(playerIds);
   const roles = {};
   let i = 0;
   for (let n = 0; n < counts.crew && i < shuffled.length; n++) roles[shuffled[i++]] = 'crew';
@@ -109,7 +118,7 @@ export function startGame(inviteCode) {
   game.phase = PHASES.DESCRIPTION;
   game.round = 1;
   game.eliminated = [];
-  game.descriptionOrder = [...playerIds].sort(() => Math.random() - 0.5);
+  game.descriptionOrder = shuffleArray(playerIds);
   game.descriptions = {};
   game.votes = {};
   game.blankGuess = null;
@@ -252,7 +261,7 @@ export function nextRound(inviteCode) {
   if (!game || game.phase !== PHASES.ROUND_END) return null;
   game.phase = PHASES.DESCRIPTION;
   game.round += 1;
-  game.descriptionOrder = getAlivePlayerIds(game).sort(() => Math.random() - 0.5);
+  game.descriptionOrder = shuffleArray(getAlivePlayerIds(game));
   return game;
 }
 

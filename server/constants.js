@@ -8,5 +8,5 @@ export const ROLE_KEYS = {
 export const ROLE_LABELS = {
   [ROLE_KEYS.CREW]: 'Manchodu',
   [ROLE_KEYS.BLUR]: 'Massgod',
-  [ROLE_KEYS.BLANK]: 'Dongazook',
+  [ROLE_KEYS.BLANK]: 'Black Sheep',
 };
