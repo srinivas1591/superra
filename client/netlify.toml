@@ -1,0 +1,11 @@
+# Deploy the client (React) to Netlify. Backend must be hosted elsewhere.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# SPA: all routes go to index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
